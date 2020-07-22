@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="content-info-top">
-        <h1>Bienvenu sur mon portfolio</h1>
+        <h1>Bienvenue sur mon portfolio</h1>
         <h2>Galgros aka Mr Sample aka Samplit0</h2>
         <p>
             Compositeur de musique électronique, Streameur Casu de jeux vidéo-ludique,
@@ -21,6 +21,43 @@
         <a href="#"><div class="link-btn">Picture</div></a>
     </div>
     <div class="contact-section">
-
+        <div>
+            {{ form_start(form) }}
+            {{ form_widget(form.mail) }}
+            {{ form_widget(form.name) }}
+            {{ form_widget(form.message) }}
+            <button type="submit" class="btn btn-button">Send</button>
+            {{ form_end(form) }}
+        </div>
+        <div class="contact-text">
+            <h3>Contactez moi pour plus d'information</h3>
+            <div>
+                <small>mail: galgros@yahoo.fr</small>
+            </div>
+            <div>
+                <small>tel: 0123456789</small>
+            </div>
+        </div>
+        <div>
+            <div id="map"></div>
+        </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            var uluru = {lat: 45.836517, lng: 4.771699};
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 10, center: uluru});
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({position: uluru, map: map});
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key={{ apiKey }}&callback=initMap">
+    </script>
 {% endblock %}
