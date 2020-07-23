@@ -3,11 +3,16 @@
 {% block title %}Ajouter Music{% endblock %}
 
 {% block body %}
-    <div class="content-info-top">
-        <h1>Ajouter une Music</h1>
+    <div class="music-index">
+
+        <div class="content-info-top">
+            <h1>Ajouter une Music</h1>
+        </div>
+
+        {{ include('music/_form.html.twig') }}
+
+        <a href="{{ path('music_index') }}">
+            <button class="btn btn-info">Retour</button>
+        </a>
     </div>
-
-    {{ include('music/_form.html.twig') }}
-
-    <a href="{{ path('music_index') }}"><button class="btn btn-info">Retour</button></a>
 {% endblock %}

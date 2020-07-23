@@ -3,13 +3,17 @@
 {% block title %}Modifier Music{% endblock %}
 
 {% block body %}
-    <div class="content-info-top">
-        <h1>Modifier Music</h1>
+    <div class="music-index">
+        <div class="content-info-top">
+            <h1>Modifier Music</h1>
+        </div>
+
+        {{ include('music/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <a href="{{ path('music_index') }}">
+            <button class="btn btn-info">Retour</button>
+        </a>
+
+        {{ include('music/_delete_form.html.twig') }}
     </div>
-
-    {{ include('music/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('music_index') }}"><button class="btn btn-info">Retour</button></a>
-
-    {{ include('music/_delete_form.html.twig') }}
 {% endblock %}
