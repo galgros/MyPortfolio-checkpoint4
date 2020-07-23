@@ -4,14 +4,13 @@
         <meta charset="UTF-8">
         <title>{% block title %}Galgros-MrSample-Samplito{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
         {{ encore_entry_link_tags('app') }}
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" href="/">
-                <div>Galgros</div>
-                <div><small>Mr Sample</small></div>
-                <div><small>Samplito</small></div>
+                <img src="{{ asset('/image/panda-front.png') }}">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

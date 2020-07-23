@@ -6,6 +6,7 @@ use App\Form\ContactType;
 use App\Repository\ProjectRepository;
 use App\Repository\VideoRepository;
 use App\Service\MailerService;
+use App\Service\Slugify;
 use App\Service\TumblrService;
 use Google_Service_YouTube;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -55,6 +56,19 @@ class HomeController extends AbstractController
 
     /**
      * @return Response
+     * @Route("/project/{slug}", name="app_project")
+     */
+    public function project(ProjectRepository $projectRepository, string $slug): Response
+    {
+        $project = $projectRepository->findOneBy(['title' => $slug]);
+
+        return $this->render('app/project.html.twig', [
+            'project' => $project
+        ]);
+    }
+
+    /**
+     * @return Response
      * @Route("/music", name="app_music")
      */
     public function music(VideoRepository $videoRepository): Response
@@ -88,7 +102,7 @@ class HomeController extends AbstractController
     public function video(
         VideoRepository $videoRepository): Response
     {
-        $videos = $videoRepository->findBy([]);
+        $videos = $videoRepository->findBy(['category' => 3]);
 
         return $this->render('app/video.html.twig', [
             'videos' => $videos

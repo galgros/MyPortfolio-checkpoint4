@@ -1,12 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="filter-music">
+        <a href="#youtube">Voir les Vidéos</a>
+    </div>
     <div class="music-page">
         <div class="content-info-top">
             <h1>Music</h1>
             <h2>Mr Sample</h2>
         </div>
-        <div class="soundcloud-iframes-container">
+        <div id="soundcloud" class="soundcloud-iframes-container">
             {% for i in 0..6 %}
             <div class="soundcloud-iframe">
                 <iframe width="100%"
@@ -28,7 +31,10 @@
             </div>
             {% endfor %}
         </div>
-        <div class="youtube-iframes-container">
+        <div class="filter-music">
+            <a href="#soundcloud">Voir les Musiques</a>
+        </div>
+        <div id="youtube" class="youtube-iframes-container">
             <div class="youtube-iframes-container">
                 {% for video in videos %}
                     {% set id = "video" ~ loop.index %}

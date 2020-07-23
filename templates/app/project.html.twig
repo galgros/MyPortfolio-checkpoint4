@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="dev-page">
+        <div class="content-info-top">
+            <h1>{{ project.title }}</h1>
+            <h2>Galgros</h2>
+        </div>
+        <div class="project-container">
+            <div class="project-container-div">
+                <img src="{{ asset('image/' ~ project.image) }}">
+            </div>
+        </div>
+        <div class="project-description">
+            <h3>{{ project.description }}</h3>
+            <p>{{ project.more }}</p>
+        </div>
+    </div>
+{% endblock %}

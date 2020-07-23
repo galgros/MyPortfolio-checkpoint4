@@ -107,6 +107,11 @@ h2 {
 .navbar-brand {
     font-size: 12px;
     margin-right: 50px;
+
+    img {
+        height: 40px;
+        width: 40px;
+    }
 }
 
 .navbar-brand:first-child {
@@ -187,10 +192,6 @@ footer {
         justify-content: center;
         align-items: center;
         box-shadow: $secondary 0px 0px 10px;
-
-        img {
-            margin-top: 115px;
-        }
     }
 
     .home-link {
@@ -275,6 +276,14 @@ footer {
 // END HOME INDEX SECTION //
 
 // MUSIC/VIDEO/GAMING PAGES //
+.filter-music {
+    padding: 15px;
+
+    a {
+        color: $dark-orange;
+    }
+}
+
 .music-page,
 .gaming-page,
 .video-page {
@@ -322,6 +331,13 @@ footer {
 // END MUSIC/VIDEO/GAMING PAGES //
 
 // DEV SECTION //
+.dev-page {
+    .project-description {
+        color: $secondary;
+        text-align: center;
+    }
+}
+
 .project-container {
     display: flex;
     flex-wrap: wrap;
@@ -332,13 +348,22 @@ footer {
         color: $secondary;
         border: solid $secondary;
         margin: 20px;
+        width: 300px;
+        background-color: $secondary;
+        overflow: hidden;
+        box-shadow: $primary 0px 0px 10px;
 
         h3 {
-            color: $dark-orange;
+            color: $primary;
+            padding: 10px;
+            font-size: 25px;
+            font-family: 'Shadows Into Light', cursive;
         }
 
         img {
-            width: 300px;
+            max-width: 300px;
+            max-height: 200px;
+            padding: 10px;
         }
     }
 
@@ -355,13 +380,24 @@ footer {
         flex-wrap: wrap;
         justify-content: center;
 
+        .position-1 {
+            transform: rotate(-3deg);
+        }
+
+        .position-2 {
+            transform: rotate(2deg);
+        }
+
+        .position-3 {
+            transform: rotate(0deg);
+        }
+
         .image-container {
             height: 100%;
             padding: 20px;
             padding-bottom: 100px;
             background-color: $secondary;
             box-shadow: $primary 0px 0px 10px;
-            transform: rotate(-3deg);
 
             .picture-date {
                 position: fixed;

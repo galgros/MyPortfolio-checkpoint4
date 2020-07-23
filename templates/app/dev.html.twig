@@ -3,17 +3,17 @@
 {% block body %}
     <div class="dev-page">
         <div class="content-info-top">
-            <h1>Developpements</h1>
+            <h1>Projets</h1>
             <h2>Galgros</h2>
         </div>
         <div class="project-container">
             {% for project in projects %}
-                <div class="project-container-div">
-                    <h3>{{ project.title }}</h3>
-                    <p>{{ project.description }}</p>
-                    <p>{{ project.more }}</p>
-                    <img src="{{ asset('image/' ~ project.image) }}">
-                </div>
+                <a href="{{ path('app_project', {'slug': project.title}) }}">
+                    <div class="project-container-div">
+                        <h3>{{ project.title }}</h3>
+                        <img src="{{ asset('image/' ~ project.image) }}">
+                    </div>
+                </a>
             {% endfor %}
         </div>
     </div>
