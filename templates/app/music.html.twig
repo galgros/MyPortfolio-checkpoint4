@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="music-page">
+        <div class="content-info-top">
+            <h1>Music</h1>
+            <h2>Mr Sample</h2>
+        </div>
+        <div class="filter-music">
+            <a href="#youtube">Voir les Vidéos</a>
+        </div>
+        <div id="soundcloud" class="soundcloud-iframes-container">
+            {% for music in musics %}
+                <div>{{ music.link|raw }}</div>
+            {% endfor %}
+        </div>
+        <div class="filter-music">
+            <a href="#soundcloud">Voir les Musiques</a>
+        </div>
+        <div id="youtube" class="youtube-iframes-container">
+            <div class="youtube-iframes-container">
+                {% for video in videos %}
+                    {% set id = "video" ~ loop.index %}
+                    <iframe src="{{ video.link|replace({'watch?v=' : 'embed/'}) }}"
+                            id="{{ id }}"
+                            class="youtube-iframe"
+                            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+
+                    </iframe>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

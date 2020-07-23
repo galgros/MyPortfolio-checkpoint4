@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projet{% endblock %}
+
+{% block body %}
+<div class="music-index">
+    <div class="content-info-top">
+        <h1>Projet</h1>
+    </div>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ project.id }}</td>
+        </tr>
+        <tr>
+            <th>Titre</th>
+            <td>{{ project.title }}</td>
+        </tr>
+        <tr>
+            <th>Déscription</th>
+            <td>{{ project.description }}</td>
+        </tr>
+        <tr>
+            <th>Plus</th>
+            <td>{{ project.more }}</td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td>{{ project.image }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="admin-btn">
+        {{ include('project/_delete_form.html.twig') }}
+
+        <a href="{{ path('project_index') }}">
+            <button class="btn btn-info">Retour</button>
+        </a>
+
+        <a href="{{ path('project_edit', {'id': project.id}) }}">
+            <button class="btn btn-success">Modifier</button>
+        </a>
+    </div>
+</div>
+{% endblock %}

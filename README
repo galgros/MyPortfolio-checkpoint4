@@ -1,0 +1,17 @@
+GALGROS PORTFOLIO
+
+1 => clone this repository:
+2 => Run: $ composer install
+3 => Run: $ yarn install
+4 => Run: $ cp .env .env.local
+5 => Set up .env.local =>
+    GOOGLE_API_KEY, (api map javascript)
+    OAuth_Tumblr_key,
+    OAuth_Tumblr_secret,
+    DATABASE_URL,
+    MAILER_DSN=smtp or MAILER_DSN=gmail
+6 => Run: $ php bin/console doctrine:database:create
+7 => Run: $ php bin/console doctrine:migration:migrate
+8 => Run: $ php bin/console doctrine:fixtures:load
+9 => Run: $ yarn encore dev
+10 => Launch your server, it's done.

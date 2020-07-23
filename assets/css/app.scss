@@ -1,0 +1,566 @@
+// assets/css/global.scss
+
+// customize some Bootstrap variables
+$primary: #000000;
+$secondary: #ffffff;
+$dark-grey: #161617;
+$dark-orange: #FF8C00;
+$light-grey: #ababab;
+
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
+
+.flash-notice {
+    text-align: center;
+    border-radius: 0;
+    margin: auto;
+    opacity: 0.8;
+}
+
+body {
+    background-color: $dark-grey;
+}
+
+.login-form {
+    display: flex;
+    margin: 40px auto;
+    flex-direction: column;
+
+    input, button {
+        margin: 10px auto;
+    }
+}
+
+label {
+    display: none;
+}
+
+input, textarea, select {
+    box-shadow: black 0px 0px 5px;
+    width: 240px;
+    margin: 5px;
+    padding: 5px;
+}
+
+textarea {
+    height: 150px;
+}
+
+// SCROLLBAR //
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+// END SCROLLBAR //
+
+h2 {
+    font-size: 22px;
+}
+
+.content-info-top {
+    padding: 15px;
+    margin: 30px auto;
+    text-align: center;
+    color: $light-grey;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    h2 {
+        color: $secondary;
+    }
+}
+
+.btn-info, btn-success, btn-danger {
+    margin: 30px;
+}
+
+.position-1 {
+    transform: rotate(-3deg);
+}
+
+.position-2 {
+    transform: rotate(2deg);
+}
+
+.position-3 {
+    transform: rotate(0deg);
+}
+
+.gold-text {
+    font-family: 'Shadows Into Light', cursive;
+    text-align: center;
+    color: 	#DAA520;
+}
+
+// NAVBAR SECTION //
+.navbar {
+    background-color: $primary;
+    color: $secondary;
+    box-shadow: $secondary 0px 0px 10px;
+}
+
+.navbar-dark .navbar-brand,
+.navbar-dark .navbar-brand:hover {
+    width: 150px;
+    color: $secondary;
+}
+
+.navbar-brand {
+    font-size: 12px;
+    margin-right: 50px;
+
+    img {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+.navbar-brand:first-child {
+    font-size: 16px;
+}
+
+.navbar-nav {
+    margin: auto;
+    text-align: center;
+
+    a {
+        width: 100px;
+        margin: auto;
+    }
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: $dark-orange;
+}
+// END NAVBAR SECTION //
+
+// FOOTER SECTION //
+footer {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    background-color: $primary;
+    color: $dark-orange;
+    box-shadow: $secondary 0px 0px 10px;
+    text-align: left;
+    padding: 20px;
+
+    a {
+        color: $light-grey;
+    }
+
+    a:hover {
+        color: $secondary;
+    }
+
+    .admin-links {
+        display: flex;
+        flex-direction: column-reverse;
+        text-align: center;
+
+        ul {
+            text-align: end;
+        }
+    }
+}
+// END FOOTER SECTION //
+
+// HOME INDEX SECTION //
+.home-page {
+    .content-info-top {
+        padding: 15px;
+        margin: auto;
+        text-align: center;
+        color: $light-grey;
+        height: 280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        h2 {
+            color: $secondary;
+        }
+    }
+
+    .home-img-container {
+        height: 360px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: $secondary 0px 0px 10px;
+    }
+
+    .home-link {
+        margin: 50px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        a {
+            color: $dark-orange;
+
+            .link-btn {
+                margin: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 70px;
+                width: 70px;
+                border-radius: 40px;
+                border: solid $dark-orange;
+                background-color: $dark-grey;
+            }
+        }
+
+
+        a:hover {
+            color: $primary;
+
+            .link-btn {
+                border: solid $dark-orange;
+                background-color: $dark-orange;
+                box-shadow: $dark-orange 0 0 10px;
+            }
+        }
+    }
+
+    .contact-section {
+        height: 360px;
+        background-color: #7a7a7a;
+        margin-bottom: 50px;
+        display: flex;
+        padding: 25px;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: inset $primary 0px 0px 10px;
+
+        .contact-text {
+            width: 250px;
+            color: $secondary;
+            text-align: center;
+
+            h3 {
+                margin-bottom: 50px;
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+            .btn {
+                color: $primary;
+                width: 100px;
+                border: solid $secondary 2px;
+                background-color: $secondary;
+                box-shadow: $primary 0px 0px 10px;
+                padding: 0;
+                margin: 5px AUTO;
+            }
+
+            .btn:hover {
+                color: $secondary;
+                background-color: $primary;
+            }
+        }
+
+        #map {
+            height: 290px;
+            width: 250px;
+            box-shadow: $primary 0px 0px 10px;
+        }
+    }
+}
+// END HOME INDEX SECTION //
+
+// MUSIC/VIDEO/GAMING PAGES //
+.filter-music {
+    padding: 15px;
+
+    a {
+        color: $dark-orange;
+    }
+}
+
+.music-page,
+.gaming-page,
+.video-page {
+    min-height: 200px;
+
+    .soundcloud-iframes-container {
+        flex-direction: column;
+        display: flex;
+        padding: 20px;
+        margin: 20px auto;
+
+        .soundcloud-links {
+            font-size: 10px;
+            color: #cccccc;
+            line-break: anywhere;
+            word-break: normal;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+            font-weight: 100;
+
+            a {
+                color: #cccccc;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .youtube-iframes-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+
+        .youtube-iframe {
+            height: 200px;
+            width: 380px;
+            border: solid $secondary;
+            margin: 15px;
+        }
+    }
+}
+// END MUSIC/VIDEO/GAMING PAGES //
+
+// DEV SECTION //
+.dev-page {
+    .project-description {
+        color: $secondary;
+        text-align: center;
+    }
+}
+
+.project-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .project-container-div {
+        text-align: center;
+        color: $secondary;
+        border: solid $secondary;
+        margin: 20px;
+        width: 300px;
+        background-color: $secondary;
+        overflow: hidden;
+        box-shadow: $primary 0px 0px 10px;
+
+        h3 {
+            color: $primary;
+            padding: 10px;
+            font-size: 25px;
+            font-family: 'Shadows Into Light', cursive;
+        }
+
+        img {
+            max-width: 300px;
+            max-height: 200px;
+            padding: 10px;
+        }
+    }
+
+}
+// END DEV SECTION //
+
+// PICTURE SECTION //
+.picture-page {
+
+    .img-body {
+
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .image-container {
+            height: 100%;
+            padding: 20px;
+            padding-bottom: 100px;
+            background-color: $secondary;
+            box-shadow: $primary 0px 0px 10px;
+
+            .picture-date {
+                position: fixed;
+                padding: 40px;
+                transform: rotate(5deg);
+                font-size: 25px;
+                font-family: 'Shadows Into Light', cursive;
+            }
+
+            img {
+                border: solid grey 2px;
+            }
+
+            .tumblr-picture {
+                width: 250px;
+                height: 250px;
+                margin: 10px;
+            }
+        }
+    }
+}
+// END PICTURE SECTION //
+
+// BOOK SECTION //
+.message-book {
+    margin-bottom: 177px;
+    width: 270px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        input, textarea {
+            padding: 10px;
+            margin: 5px auto;
+        }
+
+        button {
+            width: 200px;
+            margin: 15px auto;
+        }
+    }
+}
+
+.content-message {
+    display: flex;
+    flex-direction: row;
+
+    .message-list {
+        width: 60%;
+        margin: 30px auto;
+
+        .comment {
+            font-family: 'Shadows Into Light', cursive;
+            text-align: center;
+            color: 	#DAA520;
+            font-size: 20px;
+            padding: 20px;
+            margin: 5px;
+
+            table {
+                width: 100%;
+            }
+
+            h2 {
+                font-weight: bold;
+            }
+        }
+    }
+}
+//END BOOK SECTION //
+
+// ADMIN SECTION //
+.music-index,
+.video-index {
+    text-align: center;
+
+    .btn-info, btn-success, btn-danger {
+        margin: 30px;
+    }
+
+    label {
+        display: block;
+        color: $secondary;
+    }
+
+    .table {
+        background-color: $secondary;
+    }
+
+    .show-video {
+        display: flex;
+        justify-content: center;
+        margin: 20px;
+
+        iframe {
+            height: 200px;
+            width: 380px;
+            border: solid $secondary;
+            margin: 15px;
+        }
+    }
+;
+}
+//END ADMIN SECTION //
+
+
+@media (min-width: 576px) {
+
+    .soundcloud-iframes-container {
+        width: 100%;
+    }
+
+    .content-message {
+        flex-direction: column;
+
+        .message-book {
+            margin: auto;
+        }
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+
+    .soundcloud-iframes-container {
+        width: 100%;
+    }
+
+    .content-message {
+        flex-direction: row;
+
+        .message-book {
+            margin: inherit;
+        }
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+    .soundcloud-iframes-container {
+        width: 800px;
+    }
+
+    .content-message {
+        flex-direction: row;
+    }
+
+    // HOME INDEX SECTION //
+    .content-info-top {
+        width: 70%;
+    }
+    // END HOME INDEX SECTION //
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+    .content-message {
+        flex-direction: row;
+    }
+}

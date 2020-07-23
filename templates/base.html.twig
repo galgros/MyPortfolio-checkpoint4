@@ -2,11 +2,94 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Galgros-MrSample-Samplito{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+        {{ encore_entry_link_tags('app') }}
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="/">
+                <img src="{{ asset('/image/panda-front.png') }}">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('app_dev') }}">Dev</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('app_music') }}">Musique</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('app_gaming') }}">Gaming</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('app_video') }}">Vidéo</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('app_picture') }}">Images</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('app_book') }}">Livre D'or</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('app') }}">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success flash-notice">
+                {{ message }}
+            </div>
+        {% endfor %}
         {% block body %}{% endblock %}
+        <footer>
+            <div class="admin-links">
+                {% if app.user is null %}
+                <div>
+                    <a href="{{ path('app_login') }}"><button class="btn btn-dark">Connexion</button></a>
+                </div>
+                {% else %}
+                    <div>
+                        <a href="{{ path('app_logout') }}"><button class="btn btn-dark">Déconnexion</button></a>
+                    </div>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('project_index') }}">Dev</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('music_index') }}">Musique</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('video_index') }}">Vidéo</a>
+                    </li>
+                </ul>
+                    Admin
+                {% endif %}
+            </div>
+            <div>
+                Samplit0
+                <a class="nav-link" href="https://soundcloud.com/mr-sample" target="_blank">Samplit0 - Twitch</a>
+                <a class="nav-link" href="https://soundcloud.com/mr-sample" target="_blank">Samplit0 Streaming - Youtube</a>
+                <a class="nav-link" href="https://soundcloud.com/mr-sample" target="_blank">Saloon - Discord</a>
+                MrSample666
+                <a class="nav-link" href="https://soundcloud.com/mr-sample" target="_blank">MrSample666.tumblrrr.com</a>
+            </div>
+            <div>
+                Mr Sample
+                <a class="nav-link" href="https://soundcloud.com/mr-sample" target="_blank">Mr Sample - Soundcloud</a>
+                <a class="nav-link" href="https://soundcloud.com/mr-sample" target="_blank">Mr Sample C2 - Soundcloud</a>
+                <a class="nav-link" href="https://soundcloud.com/mr-sample" target="_blank">Mr Sample TV - Youtube</a>
+                <a class="nav-link" href="https://soundcloud.com/mr-sample" target="_blank">Mr Sample - BandCamp</a>
+            </div>
+        </footer>
         {% block javascripts %}{% endblock %}
+        {{ encore_entry_script_tags('app') }}
     </body>
 </html>
