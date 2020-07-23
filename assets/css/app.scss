@@ -5,12 +5,45 @@ $primary: #000000;
 $secondary: #ffffff;
 $dark-grey: #161617;
 $dark-orange: #FF8C00;
+$light-grey: #ababab;
 
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";
 
+.flash-notice {
+    text-align: center;
+    border-radius: 0;
+    margin: auto;
+    opacity: 0.8;
+}
+
 body {
     background-color: $dark-grey;
+}
+
+.login-form {
+    display: flex;
+    margin: 40px auto;
+    flex-direction: column;
+
+    input, button {
+        margin: 10px auto;
+    }
+}
+
+label {
+    display: none;
+}
+
+input, textarea, select {
+    box-shadow: black 0px 0px 5px;
+    width: 240px;
+    margin: 5px;
+    padding: 5px;
+}
+
+textarea {
+    height: 150px;
 }
 
 // SCROLLBAR //
@@ -39,6 +72,25 @@ h2 {
     font-size: 22px;
 }
 
+.content-info-top {
+    padding: 15px;
+    margin: 30px auto;
+    text-align: center;
+    color: $light-grey;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    h2 {
+        color: $secondary;
+    }
+}
+
+.btn-info, btn-success, btn-danger {
+    margin: 30px;
+}
+
 // NAVBAR SECTION //
 .navbar {
     background-color: $primary;
@@ -49,7 +101,7 @@ h2 {
 .navbar-dark .navbar-brand,
 .navbar-dark .navbar-brand:hover {
     width: 150px;
-    color: $dark-orange;
+    color: $secondary;
 }
 
 .navbar-brand {
@@ -67,9 +119,11 @@ h2 {
 
 .navbar-nav {
     margin: auto;
+    text-align: center;
 
     a {
         width: 100px;
+        margin: auto;
     }
 }
 
@@ -80,12 +134,32 @@ h2 {
 
 // FOOTER SECTION //
 footer {
-    height: 100px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
     background-color: $primary;
-    color: $secondary;
+    color: $dark-orange;
     box-shadow: $secondary 0px 0px 10px;
-    text-align: center;
+    text-align: left;
     padding: 20px;
+
+    a {
+        color: $light-grey;
+    }
+
+    a:hover {
+        color: $secondary;
+    }
+
+    .admin-links {
+        display: flex;
+        flex-direction: column-reverse;
+        text-align: center;
+
+        ul {
+            text-align: end;
+        }
+    }
 }
 // END FOOTER SECTION //
 
@@ -95,7 +169,7 @@ footer {
         padding: 15px;
         margin: auto;
         text-align: center;
-        color: $dark-orange;
+        color: $light-grey;
         height: 280px;
         display: flex;
         flex-direction: column;
@@ -138,7 +212,6 @@ footer {
                 border-radius: 40px;
                 border: solid $dark-orange;
                 background-color: $dark-grey;
-                box-shadow: $dark-orange 0 0 10px;
             }
         }
 
@@ -149,6 +222,7 @@ footer {
             .link-btn {
                 border: solid $dark-orange;
                 background-color: $dark-orange;
+                box-shadow: $dark-orange 0 0 10px;
             }
         }
     }
@@ -178,32 +252,17 @@ footer {
             flex-direction: column;
 
             .btn {
-                color: $secondary;
+                color: $primary;
                 width: 100px;
-                border: solid $dark-orange 2px;
+                border: solid $primary 2px;
                 padding: 0;
                 margin: 5px AUTO;
             }
 
             .btn:hover {
-                color: $primary;
-                background-color: $dark-orange;
+                color: $secondary;
+                background-color: $primary;
             }
-        }
-
-        label {
-            display: none;
-        }
-
-        input, textarea {
-            box-shadow: black 0px 0px 5px;
-            width: 240px;
-            margin: 5px;
-            padding: 5px;
-        }
-
-        textarea {
-            height: 150px;
         }
 
         #map {
@@ -218,24 +277,8 @@ footer {
 // MUSIC/VIDEO/GAMING PAGES //
 .music-page,
 .gaming-page,
-.video-page,
-.picture-page {
+.video-page {
     min-height: 200px;
-
-    .content-info-top {
-        padding: 15px;
-        margin: 30px auto;
-        text-align: center;
-        color: $dark-orange;
-        height: 100px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-
-        h2 {
-            color: $secondary;
-        }
-    }
 
     .soundcloud-iframes-container {
         flex-direction: column;
@@ -278,6 +321,30 @@ footer {
 }
 // END MUSIC/VIDEO/GAMING PAGES //
 
+// DEV SECTION //
+.project-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .project-container-div {
+        text-align: center;
+        color: $secondary;
+        border: solid $secondary;
+        margin: 20px;
+
+        h3 {
+            color: $dark-orange;
+        }
+
+        img {
+            width: 300px;
+        }
+    }
+
+}
+// END DEV SECTION //
+
 // PICTURE SECTION //
 .picture-page {
 
@@ -318,18 +385,62 @@ footer {
 }
 // END PICTURE SECTION //
 
+// ADMIN SECTION //
+.music-index,
+.video-index {
+    text-align: center;
+
+    .btn-info, btn-success, btn-danger {
+        margin: 30px;
+    }
+
+    label {
+        display: block;
+        color: $secondary;
+    }
+
+    .table {
+        background-color: $secondary;
+    }
+
+    .show-video {
+        display: flex;
+        justify-content: center;
+        margin: 20px;
+
+        iframe {
+            height: 200px;
+            width: 380px;
+            border: solid $secondary;
+            margin: 15px;
+        }
+    }
+;
+}
+//END ADMIN SECTION //
 
 @media (min-width: 576px) {
 
+    #navbarNav {
+        padding-right: 0;
+    }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
 
+    #navbarNav {
+        padding-right: 0;
+    }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
+
+    #navbarNav {
+        padding-right: 150px;
+    }
+
     // HOME INDEX SECTION //
     .content-info-top {
         width: 70%;
@@ -340,4 +451,7 @@ footer {
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
 
+    #navbarNav {
+        padding-right: 150px;
+    }
 }

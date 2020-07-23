@@ -3,14 +3,16 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
+use App\Repository\ProjectRepository;
 use App\Repository\VideoRepository;
 use App\Service\MailerService;
 use App\Service\TumblrService;
+use Google_Service_YouTube;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Google_Client;
 
 class HomeController extends AbstractController
 {
@@ -27,6 +29,9 @@ class HomeController extends AbstractController
         if ($form->isSubmitted() && !empty($form->getData())) {
             $data = $form->getData();
             $mailerService->sendEmail($data);
+            $this->addFlash('success', 'Votre message a bien été envoyé');
+
+            return $this->redirectToRoute('app');
         }
 
         return $this->render('app/index.html.twig', [
@@ -39,9 +44,13 @@ class HomeController extends AbstractController
      * @return Response
      * @Route("/dev", name="app_dev")
      */
-    public function dev(): Response
+    public function dev(ProjectRepository $projectRepository): Response
     {
-        return $this->render('app/dev.html.twig');
+        $projects = $projectRepository->findAll();
+
+        return $this->render('app/dev.html.twig', [
+            'projects' => $projects
+        ]);
     }
 
     /**
@@ -50,10 +59,10 @@ class HomeController extends AbstractController
      */
     public function music(VideoRepository $videoRepository): Response
     {
-        $video = $videoRepository->findOneBy([]);
+        $videos = $videoRepository->findBy(['category' => 1]);
 
         return $this->render('app/music.html.twig', [
-            'video' => $video
+            'videos' => $videos
             ]);
 
     }
@@ -64,10 +73,10 @@ class HomeController extends AbstractController
      */
     public function gaming(VideoRepository $videoRepository): Response
     {
-        $video = $videoRepository->findOneBy([]);
+        $videos = $videoRepository->findBy(['category' => 2]);
 
         return $this->render('app/gaming.html.twig', [
-            'video' => $video
+            'videos' => $videos
         ]);
 
     }
@@ -79,10 +88,10 @@ class HomeController extends AbstractController
     public function video(
         VideoRepository $videoRepository): Response
     {
-        $video = $videoRepository->findOneBy([]);
+        $videos = $videoRepository->findBy([]);
 
         return $this->render('app/video.html.twig', [
-            'video' => $video
+            'videos' => $videos
         ]);
 
     }

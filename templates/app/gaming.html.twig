@@ -7,8 +7,10 @@
             <h2>Samplit0</h2>
         </div>
         <div class="youtube-iframes-container">
-            {% for i in 0..10 %}
-                <iframe src="{{ video.link }}"
+            {% for video in videos %}
+                {% set id = "video" ~ loop.index %}
+                <iframe src="{{ video.link|replace({'watch?v=' : 'embed/'}) }}"
+                        id="{{ id }}"
                         class="youtube-iframe"
                         frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen>

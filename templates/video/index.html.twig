@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Video index{% endblock %}
+
+{% block body %}
+    <div class="video-index">
+        <div class="content-info-top">
+            <h1>Video index</h1>
+        </div>
+        <a href="{{ path('video_new') }}"><button type="button" class="btn btn-info">Ajouter une Video</button></a>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Catégorie</th>
+                <th>Titre</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for video in videos %}
+                <tr>
+                    <td>{{ video.category.name }}</td>
+                    <td>{{ video.title }}</td>
+                    <td>
+                        <a href="{{ path('video_show', {'id': video.id}) }}">show</a>
+                        <a href="{{ path('video_edit', {'id': video.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucun résultat</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

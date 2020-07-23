@@ -3,32 +3,41 @@
 {% block title %}Music{% endblock %}
 
 {% block body %}
-    <h1>Music</h1>
+    <div class="content-info-top">
+        <h1>Music</h1>
+    </div>
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ music.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ music.title }}</td>
-            </tr>
-            <tr>
-                <th>Link</th>
-                <td>{{ music.link }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ music.createdAt ? music.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ music.id }}</td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td>{{ music.title }}</td>
+        </tr>
+        <tr>
+            <th>Link</th>
+            <td>{{ music.link }}</td>
+        </tr>
+        <tr>
+            <th>CreatedAt</th>
+            <td>{{ music.createdAt ? music.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('music_index') }}">back to list</a>
+    <div class="admin-btn">
+        {{ include('music/_delete_form.html.twig') }}
 
-    <a href="{{ path('music_edit', {'id': music.id}) }}">edit</a>
+        <a href="{{ path('music_index') }}">
+            <button class="btn btn-info">Retour</button>
+        </a>
 
-    {{ include('music/_delete_form.html.twig') }}
+        <a href="{{ path('music_edit', {'id': music.id}) }}">
+            <button class="btn btn-info">Modifer</button>
+        </a>
+    </div>
+
 {% endblock %}

@@ -33,7 +33,7 @@ class Video
     private $createdAt;
 
     /**
-     * @ORM\OneToOne(targetEntity=Category::class, cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="videos")
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
@@ -84,7 +84,7 @@ class Video
         return $this->category;
     }
 
-    public function setCategory(Category $category): self
+    public function setCategory(?Category $category): self
     {
         $this->category = $category;
 
