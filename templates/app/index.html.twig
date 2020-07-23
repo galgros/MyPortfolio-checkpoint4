@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="home-page">
+        <div class="content-info-top">
+            <h1>Bienvenue sur mon portfolio</h1>
+            <h2>Galgros aka Mr Sample aka Samplit0</h2>
+            <p>
+                Compositeur de musique électronique, Streameur Casu de jeux vidéo-ludique,
+                Montage de photos et de vidéos souvent décallées et depuis peu développeur Web.
+                Ce portfolio à pour but de vous faire découvrir mon univers au travers de mes créations
+            </p>
+        </div>
+        <div class="home-img-container">
+            <img src="{{ asset('image/tumblr_o1lza6H3h31t2vvy4o1_1280.png') }}">
+        </div>
+        <div class="home-link">
+            <a href="{{ path('app_dev') }}"><div class="link-btn">Dev</div></a>
+            <a href="{{ path('app_music') }}"><div class="link-btn">Music</div></a>
+            <a href="{{ path('app_gaming') }}"><div class="link-btn">Gaming</div></a>
+            <a href="{{ path('app_video') }}"><div class="link-btn">Video</div></a>
+            <a href="{{ path('app_picture') }}"><div class="link-btn">Picture</div></a>
+        </div>
+        <div class="contact-section">
+            <div>
+                {{ form_start(form) }}
+                {{ form_widget(form.mail) }}
+                {{ form_widget(form.name) }}
+                {{ form_widget(form.message) }}
+                <button type="submit" class="btn btn-button">Send</button>
+                {{ form_end(form) }}
+            </div>
+            <div class="contact-text">
+                <h3>Contactez moi pour plus d'information</h3>
+                <div>
+                    <small>mail: galgros@yahoo.fr</small>
+                </div>
+                <div>
+                    <small>tel: 0123456789</small>
+                </div>
+            </div>
+            <div>
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            var uluru = {lat: 45.836517, lng: 4.771699};
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 10, center: uluru});
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({position: uluru, map: map});
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key={{ apiKey }}&callback=initMap">
+    </script>
+{% endblock %}

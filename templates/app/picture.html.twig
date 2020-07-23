@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div class="picture-page">
+        <div class="content-info-top">
+            <h1>Pictures</h1>
+            <h2>MrSample666.tumblrrrrrr.com</h2>
+        </div>
+        <div class="img-body">
+            {% for image in images %}
+                <div class="image-container">
+                    {{ image['data-html']|raw }}
+                    <div class="picture-date">
+                        {{ image['date']|date('D d M Y') }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

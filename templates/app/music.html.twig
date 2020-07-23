@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="music-page">
+        <div class="content-info-top">
+            <h1>Music</h1>
+            <h2>Mr Sample</h2>
+        </div>
+        <div class="soundcloud-iframes-container">
+            {% for i in 0..6 %}
+            <div class="soundcloud-iframe">
+                <iframe width="100%"
+                        scrolling="no"
+                        frameborder="no" allow="autoplay"
+                        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/732838702&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+                </iframe>
+                <div class="soundcloud-links">
+                    <a href="https://soundcloud.com/mrsamplec2"
+                       title="Mr Sample C2"
+                       target="_blank">
+                        Mr Sample C2
+                    </a> ·<a href="https://soundcloud.com/mrsamplec2/alchemy20020"
+                             title="Alchemy20020"
+                             target="_blank">
+                        Alchemy20020
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="youtube-iframes-container">
+            {% for i in 0..4 %}
+            <iframe src="{{ video.link }}"
+                    class="youtube-iframe"
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+
+            </iframe>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

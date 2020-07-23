@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="gaming-page">
+        <div class="content-info-top">
+            <h1>Video</h1>
+            <h2>Mr Sample TV</h2>
+        </div>
+        <div class="youtube-iframes-container">
+            {% for i in 0..10 %}
+                {% set id = "video" ~ i %}
+                <iframe src="{{ video.link }}"
+                        id="{{ id }}"
+                        class="youtube-iframe"
+                        onclick="videoToggle({{ id }})"
+                        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+
+                </iframe>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
