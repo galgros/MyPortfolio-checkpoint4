@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\MusicRepository;
+use App\Repository\CommentaryRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=MusicRepository::class)
+ * @ORM\Entity(repositoryClass=CommentaryRepository::class)
  */
-class Music
+class Commentary
 {
     /**
      * @ORM\Id()
@@ -18,14 +18,14 @@ class Music
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      */
-    private $title;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=1000)
      */
-    private $link;
+    private $message;
 
     /**
      * @ORM\Column(type="datetime")
@@ -37,26 +37,26 @@ class Music
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getName(): ?string
     {
-        return $this->title;
+        return $this->name;
     }
 
-    public function setTitle(string $title): self
+    public function setName(string $name): self
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
     }
 
-    public function getLink(): ?string
+    public function getMessage(): ?string
     {
-        return $this->link;
+        return $this->message;
     }
 
-    public function setLink(string $link): self
+    public function setMessage(string $message): self
     {
-        $this->link = $link;
+        $this->message = $message;
 
         return $this;
     }

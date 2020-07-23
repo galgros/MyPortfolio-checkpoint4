@@ -2,7 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Commentary;
+use App\Form\CommentaryType;
 use App\Form\ContactType;
+use App\Repository\CommentaryRepository;
+use App\Repository\MusicRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\VideoRepository;
 use App\Service\MailerService;
@@ -71,12 +75,14 @@ class HomeController extends AbstractController
      * @return Response
      * @Route("/music", name="app_music")
      */
-    public function music(VideoRepository $videoRepository): Response
+    public function music(VideoRepository $videoRepository, MusicRepository $musicRepository): Response
     {
         $videos = $videoRepository->findBy(['category' => 1]);
+        $musics = $musicRepository->findAll();
 
         return $this->render('app/music.html.twig', [
-            'videos' => $videos
+            'videos' => $videos,
+            'musics' => $musics
             ]);
 
     }
@@ -120,6 +126,37 @@ class HomeController extends AbstractController
 
         return $this->render('app/picture.html.twig',[
             'images' => $images
+        ]);
+    }
+
+    /**
+     * @return Response
+     * @Route("/book", name="app_book")
+     */
+    public function book(CommentaryRepository $commentaryRepository, Request $request): Response
+    {
+        $comments = $commentaryRepository->findBy([], ['createdAt' => 'DESC']);
+
+        $form = $this->createForm(CommentaryType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && !empty($form->getData())) {
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $commentary = new Commentary();
+            $commentary->setName($form->get('name')->getData())
+                ->setMessage($form->get('message')->getData())
+                ->setCreatedAt(date_create('now'));
+            $entityManager->persist($commentary);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_book');
+        }
+
+
+        return $this->render('app/book.html.twig',[
+            'form' => $form->createView(),
+            'comments' => $comments,
         ]);
     }
 }

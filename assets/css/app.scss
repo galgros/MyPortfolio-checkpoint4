@@ -130,10 +130,6 @@ h2 {
     font-size: 16px;
 }
 
-#navbarNav {
-    padding-right: 150px;
-}
-
 .navbar-nav {
     margin: auto;
     text-align: center;
@@ -307,7 +303,6 @@ footer {
         flex-direction: column;
         display: flex;
         padding: 20px;
-        width: 700px;
         margin: 20px auto;
 
         .soundcloud-links {
@@ -423,6 +418,55 @@ footer {
 }
 // END PICTURE SECTION //
 
+// BOOK SECTION //
+.message-book {
+    margin-bottom: 177px;
+    width: 270px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        input, textarea {
+            padding: 10px;
+            margin: 5px auto;
+        }
+
+        button {
+            width: 200px;
+            margin: 15px auto;
+        }
+    }
+}
+
+.content-message {
+    display: flex;
+    flex-direction: row;
+
+    .message-list {
+        width: 60%;
+        margin: 30px auto;
+
+        .comment {
+            font-family: 'Shadows Into Light', cursive;
+            text-align: center;
+            color: 	#DAA520;
+            font-size: 20px;
+            padding: 20px;
+            margin: 5px;
+
+            table {
+                width: 100%;
+            }
+
+            h2 {
+                font-weight: bold;
+            }
+        }
+    }
+}
+//END BOOK SECTION //
+
 // ADMIN SECTION //
 .music-index,
 .video-index {
@@ -457,26 +501,47 @@ footer {
 }
 //END ADMIN SECTION //
 
+
 @media (min-width: 576px) {
 
-    #navbarNav {
-        padding-right: 0;
+    .soundcloud-iframes-container {
+        width: 100%;
+    }
+
+    .content-message {
+        flex-direction: column;
+
+        .message-book {
+            margin: auto;
+        }
     }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
 
-    #navbarNav {
-        padding-right: 0;
+    .soundcloud-iframes-container {
+        width: 100%;
+    }
+
+    .content-message {
+        flex-direction: row;
+
+        .message-book {
+            margin: inherit;
+        }
     }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
 
-    #navbarNav {
-        padding-right: 150px;
+    .soundcloud-iframes-container {
+        width: 800px;
+    }
+
+    .content-message {
+        flex-direction: row;
     }
 
     // HOME INDEX SECTION //
@@ -489,7 +554,7 @@ footer {
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
 
-    #navbarNav {
-        padding-right: 150px;
+    .content-message {
+        flex-direction: row;
     }
 }

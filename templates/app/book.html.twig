@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="music-page">
+    <div class="content-info-top">
+        <h1>Livre D'or</h1>
+    </div>
+    <div class="content-message">
+        <div class="message-book">
+            {{ form_start(form) }}
+            {{ form_widget(form.name) }}
+            {{ form_widget(form.message) }}
+            <button class="btn btn-info">Poster</button>
+            {{ form_end(form) }}
+        </div>
+        <div class="message-list">
+            {% for comment in comments %}
+                <div class="comment">
+                    <h2>{{ comment.name }}</h2>
+                    <p>{{ comment.message }}</p>
+                    <p>{{ comment.createdAt|date('d,m,Y') }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
