@@ -21,6 +21,8 @@ class ProjectController extends AbstractController
      */
     public function index(ProjectRepository $projectRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         return $this->render('project/index.html.twig', [
             'projects' => $projectRepository->findAll(),
         ]);
@@ -31,6 +33,8 @@ class ProjectController extends AbstractController
      */
     public function new(Request $request, Slugify $slugify): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $project = new Project();
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
@@ -60,6 +64,8 @@ class ProjectController extends AbstractController
      */
     public function show(Project $project): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         return $this->render('project/show.html.twig', [
             'project' => $project,
         ]);
@@ -70,6 +76,8 @@ class ProjectController extends AbstractController
      */
     public function edit(Request $request, Project $project, Slugify $slugify): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
 
@@ -95,6 +103,8 @@ class ProjectController extends AbstractController
      */
     public function delete(Request $request, Project $project): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         if ($this->isCsrfTokenValid('delete'.$project->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($project);

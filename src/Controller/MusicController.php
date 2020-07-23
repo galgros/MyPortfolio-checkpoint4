@@ -20,6 +20,8 @@ class MusicController extends AbstractController
      */
     public function index(MusicRepository $musicRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         return $this->render('music/index.html.twig', [
             'music' => $musicRepository->findAll(),
         ]);
@@ -30,6 +32,8 @@ class MusicController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $music = new Music();
         $form = $this->createForm(MusicType::class, $music);
         $form->handleRequest($request);
@@ -53,6 +57,8 @@ class MusicController extends AbstractController
      */
     public function show(Music $music): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         return $this->render('music/show.html.twig', [
             'music' => $music,
         ]);
@@ -63,6 +69,8 @@ class MusicController extends AbstractController
      */
     public function edit(Request $request, Music $music): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $form = $this->createForm(MusicType::class, $music);
         $form->handleRequest($request);
 
@@ -83,6 +91,8 @@ class MusicController extends AbstractController
      */
     public function delete(Request $request, Music $music): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         if ($this->isCsrfTokenValid('delete'.$music->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($music);

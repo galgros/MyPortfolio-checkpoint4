@@ -21,6 +21,8 @@ class VideoController extends AbstractController
      */
     public function index(VideoRepository $videoRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         return $this->render('video/index.html.twig', [
             'videos' => $videoRepository->findAll(),
         ]);
@@ -31,6 +33,8 @@ class VideoController extends AbstractController
      */
     public function new(Request $request, CategoryRepository $categoryRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $video = new Video();
         $form = $this->createForm(VideoType::class, $video);
         $form->handleRequest($request);
@@ -55,6 +59,8 @@ class VideoController extends AbstractController
      */
     public function show(Video $video): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         return $this->render('video/show.html.twig', [
             'video' => $video,
         ]);
@@ -65,6 +71,8 @@ class VideoController extends AbstractController
      */
     public function edit(Request $request, Video $video): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $form = $this->createForm(VideoType::class, $video);
         $form->handleRequest($request);
 
@@ -85,6 +93,8 @@ class VideoController extends AbstractController
      */
     public function delete(Request $request, Video $video): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         if ($this->isCsrfTokenValid('delete'.$video->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($video);

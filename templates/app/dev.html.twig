@@ -9,7 +9,7 @@
         <div class="project-container">
             {% for project in projects %}
                 <a href="{{ path('app_project', {'slug': project.title}) }}">
-                    <div class="project-container-div">
+                    <div class="project-container-div position-{{ random(1, 3) }}">
                         <h3>{{ project.title }}</h3>
                         <img src="{{ asset('image/' ~ project.image) }}">
                     </div>

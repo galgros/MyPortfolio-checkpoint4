@@ -91,6 +91,18 @@ h2 {
     margin: 30px;
 }
 
+.position-1 {
+    transform: rotate(-3deg);
+}
+
+.position-2 {
+    transform: rotate(2deg);
+}
+
+.position-3 {
+    transform: rotate(0deg);
+}
+
 // NAVBAR SECTION //
 .navbar {
     background-color: $primary;
@@ -255,7 +267,9 @@ footer {
             .btn {
                 color: $primary;
                 width: 100px;
-                border: solid $primary 2px;
+                border: solid $secondary 2px;
+                background-color: $secondary;
+                box-shadow: $primary 0px 0px 10px;
                 padding: 0;
                 margin: 5px AUTO;
             }
@@ -379,18 +393,6 @@ footer {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-
-        .position-1 {
-            transform: rotate(-3deg);
-        }
-
-        .position-2 {
-            transform: rotate(2deg);
-        }
-
-        .position-3 {
-            transform: rotate(0deg);
-        }
 
         .image-container {
             height: 100%;
